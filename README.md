@@ -51,9 +51,9 @@ lark-cli api GET /open-apis/wiki/v2/spaces
 # {
 #   "spaces": [
 #     {
-#       "name": "小胰宝wiki2.0",
-#       "space_id": "7625453427367103419",
-#       "root_folder_token": "QtIXwuGf4iAfVskGfj8cjxfYnmf"
+#       "name": "<YOUR_SPACE_NAME>",
+#       "space_id": "<YOUR_SPACE_ID>",
+#       "root_folder_token": "<YOUR_FOLDER_TOKEN>"
 #     }
 #   ]
 # }
@@ -73,7 +73,7 @@ lark-cli api GET /open-apis/wiki/v2/spaces/{space_id}/nodes
 # 基本语法
 lark-cli docs +create \
   --title "文档标题" \
-  --folder-token "QtIXwuGf4iAfVskGfj8cjxfYnmf" \
+  --folder-token "<YOUR_FOLDER_TOKEN>" \
   --markdown "@本地文件.md"
 ```
 
@@ -87,9 +87,9 @@ lark-cli docs +create \
 ```json
 {
   "doc": {
-    "doc_token": "ZR3PdmIGAow8WpxT019cny6cnph",
-    "title": "智谱AI深度研究报告",
-    "url": "https://www.feishu.cn/docx/ZR3PdmIGAow8WpxT019cny6cnph"
+    "doc_token": "<YOUR_DOC_TOKEN>",
+    "title": "<DOC_TITLE>",
+    "url": "https://www.feishu.cn/docx/<YOUR_DOC_TOKEN>"
   }
 }
 ```
@@ -145,9 +145,9 @@ def create_feishu_doc(title: str, md_path: str, folder_token: str) -> dict:
 
 # 使用示例
 doc_info = create_feishu_doc(
-    title="智谱AI深度研究报告",
+    title="<DOC_TITLE>",
     md_path="/Users/sammini/report.md",
-    folder_token="QtIXwuGf4iAfVskGfj8cjxfYnmf"
+    folder_token="<YOUR_FOLDER_TOKEN>"
 )
 print(f"✅ 文档创建成功: {doc_info['url']}")
 ```
@@ -157,7 +157,7 @@ print(f"✅ 文档创建成功: {doc_info['url']}")
 ```bash
 # 完全替换文档内容（保留标题/权限等元数据）
 lark-cli docs +blocks-replace \
-  --doc "ZR3PdmIGAow8WpxT019cny6cnph" \
+  --doc "<YOUR_DOC_TOKEN>" \
   --markdown "@更新后的文件.md"
 ```
 
@@ -174,9 +174,18 @@ lark-cli docs +blocks-replace \
 | 项目 | 值 |
 |------|-----|
 | lark-cli 版本 | 1.0.14 |
-| 知识库空间 | 小胰宝wiki2.0 |
-| space_id | 7625453427367103419 |
-| 根节点 folder_token | QtIXwuGf4iAfVskGfj8cjxfYnmf |
+| 知识库空间 | <YOUR_SPACE_NAME> |
+| space_id | <YOUR_SPACE_ID> |
+| 根节点 folder_token | <YOUR_FOLDER_TOKEN> |
+
+## ⚠️ 安全提醒
+
+**切勿将真实 token、doc_id、space_id 提交到版本控制系统！**
+
+- `folder_token`、`space_id`、`doc_token` 属于敏感凭证
+- 示例代码中的占位符 `<YOUR_XXX>` 需替换为实际值
+- 建议将敏感信息存储在环境变量或配置文件中，勿硬编码
+- 推送前检查是否有敏感信息泄露（可使用 `git grep` 或 `trufflehog`）
 
 ## 故障排查
 
