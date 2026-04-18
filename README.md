@@ -226,5 +226,5 @@ lark-cli docs +blocks-replace \
 ## 相关链接
 
 - [lark-cli 官方文档](https://open.feishu.cn/document/ukTMukTMukTM/uAjLw4CMzUjLwIzhN)
-- [飞书开放 API - 知识库](https://open.feishu.cn/document/ukTMukTMukTM/uUnz4UjL2QzL24iN3IjN)
+- [飞书开放 API - 知识库]([https://open.feishu.cn/document/ukTMukTMukTM/uUnz4UjL2QzL24iN3IjN](https://open.feishu.cn/document/mcp_open_tools/feishu-cli-let-ai-actually-do-your-work-in-feishu))
 - Hermes Agent 文档：`~/.hermes/docs/`
