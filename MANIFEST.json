@@ -1,0 +1,93 @@
+{
+  "manifest_version": "1.0",
+  "name": "feishu-cli-messageprocess-skills",
+  "version": "1.1.0",
+  "description": "飞书 Lark CLI 消息处理技能包 - 支持智能会话选择、缓存、交互式选择",
+  "skills": [
+    {
+      "id": "feishu-file-send-lark-cli",
+      "name": "feishu-file-send-lark-cli",
+      "description": "使用 lark-cli 发送本地文件到飞书会话（增强版：交互选择+关键词匹配+缓存）",
+      "category": "messaging",
+      "platforms": [
+        "hermes",
+        "openclaw",
+        "codex",
+        "claude",
+        "amp",
+        "opencode"
+      ],
+      "entry": "skills/messaging/feishu-file-send-lark-cli/SKILL.md",
+      "handler": "skills/messaging/feishu-file-send-lark-cli/handler.py",
+      "dependencies": {
+        "tools": [
+          "lark-cli"
+        ],
+        "env": []
+      },
+      "new_in": "1.1.0"
+    },
+    {
+      "id": "feishu-message-send-lark-cli",
+      "name": "feishu-message-send-lark-cli",
+      "description": "使用 lark-cli 发送文本/富文本消息到飞书会话（增强版：交互选择+关键词匹配+缓存）",
+      "category": "messaging",
+      "platforms": [
+        "hermes",
+        "openclaw",
+        "codex",
+        "claude",
+        "amp",
+        "opencode"
+      ],
+      "entry": "skills/messaging/feishu-message-send-lark-cli/SKILL.md",
+      "handler": "skills/messaging/feishu-message-send-lark-cli/handler.py",
+      "dependencies": {
+        "tools": [
+          "lark-cli"
+        ],
+        "env": []
+      },
+      "new_in": "1.1.0"
+    },
+    {
+      "id": "feishu-doc-create-lark-cli",
+      "name": "feishu-doc-create-lark-cli",
+      "description": "使用 lark-cli 创建或更新飞书云文档（支持 Markdown 导入）",
+      "category": "messaging",
+      "platforms": [
+        "hermes",
+        "openclaw",
+        "codex",
+        "claude",
+        "amp",
+        "opencode"
+      ],
+      "entry": "skills/messaging/feishu-doc-create-lark-cli/SKILL.md",
+      "dependencies": {
+        "tools": [
+          "lark-cli"
+        ],
+        "env": []
+      }
+    }
+  ],
+  "shared_modules": [
+    {
+      "path": "skills/messaging/_utils/chat_selector.py",
+      "description": "共享会话选择器（交互选择、关键词匹配、缓存）",
+      "used_by": [
+        "feishu-file-send-lark-cli",
+        "feishu-message-send-lark-cli"
+      ]
+    }
+  ],
+  "install": {
+    "hermes": "hermes skills install .",
+    "openclaw": "openclaw skills install .",
+    "codex": "codex skills install .",
+    "claude": "claude skills install .",
+    "amp": "amp skills install .",
+    "opencode": "opencode skills install ."
+  }
+}
